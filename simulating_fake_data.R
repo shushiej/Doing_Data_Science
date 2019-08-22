@@ -17,6 +17,11 @@ abline(coefs[1], coefs[2]) # Looks similar to the first plot.
 # Make a Gamma Distribution
 x_2 <- rgamma(1000, 1, 1)
 hist(x_2)
-true_beta_3 <- 7.9
-y_2 <- true_beta_0 + true_beta_1 * x_1 + true_beta_3 * (x_2 ^ 2) + true_error
+y_2 <- true_beta_0 + true_beta_1 * x_1 +  (x_2 ^ 2) + true_error
 plot(x_2, y_2, col="blue")
+model_2 <- lm(y_2, x_2)
+summary(model_2)
+
+coefs_model_2 <- ceof(model_2)
+plot(x_2, y_2, pch=0, col='green')
+abline(coefs_model_2[1], coefs_model_2[2])
